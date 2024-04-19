@@ -1,0 +1,42 @@
+﻿<Window x:Class="Bascula.Pages.Recuperador"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Bascula.Pages"
+        mc:Ignorable="d"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"
+        Title="Recuperador" Height="370" Width="743">
+    <Grid>
+        <Label Content="Busqueda" FontSize="14" FontWeight="Bold" HorizontalAlignment="Left" Height="26" Margin="7,9,0,0" VerticalAlignment="Top" Width="76"/>
+        <Button x:Name="Buscar" Content="Buscar" Background="#28b240" FontSize="14" Foreground="WHITE" HorizontalAlignment="Left" Height="32" Margin="32,277,0,0" VerticalAlignment="Top" Width="125" Click="Button_Click_3"/>
+        <Label Content="No. de Socio:" FontSize="14" HorizontalAlignment="Left" Height="26" Margin="7,38,0,0" VerticalAlignment="Top" Width="127"/>
+        <Label Content="Nombre:" FontSize="14" HorizontalAlignment="Left" Height="26" Margin="7,91,0,0" VerticalAlignment="Top" Width="127"/>
+        <Label Content="Apellido Paterno:" FontSize="14" HorizontalAlignment="Left" Height="26" Margin="7,139,0,0" VerticalAlignment="Top" Width="127"/>
+        <Label Content="Apellido Materno:" FontSize="14" HorizontalAlignment="Left" Height="26" Margin="7,191,0,0" VerticalAlignment="Top" Width="127"/>
+        <TextBox x:Name="SocioBusqueda" HorizontalAlignment="Left" Height="26" Margin="143,38,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="77" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" PreviewTextInput="SocioBusqueda_PreviewTextInput"  CommandManager.PreviewExecuted="TextBox_PreviewExecuted"/>
+        <TextBox x:Name="NombreBusqueda" HorizontalAlignment="Left" Height="26" Margin="143,91,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="202" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" KeyUp="TextBox_KeyUp" PreviewTextInput="Valida_PreviewTextInput"/>
+        <TextBox x:Name="ApPaternoBusqueda" HorizontalAlignment="Left" Height="26" Margin="143,139,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="202" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" KeyUp="TextBox_KeyUp" PreviewTextInput="Valida_PreviewTextInput"/>
+        <TextBox x:Name="ApMaternoBusqueda" HorizontalAlignment="Left" Height="26" Margin="143,191,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="202" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" KeyUp="TextBox_KeyUp" PreviewTextInput="Valida_PreviewTextInput"/>
+        <Rectangle HorizontalAlignment="Left" Height="315" Margin="350,0,0,0" Stroke="#CCC" VerticalAlignment="Top" Width="1"/>
+        <Rectangle HorizontalAlignment="Left" Height="1" Margin="0,75,0,0" Stroke="#CCC" VerticalAlignment="Top" Width="350"/>
+        <Button Content="Registrar" Background="#006aaf" FontSize="14" Foreground="WHITE" HorizontalAlignment="Left" Height="32" Margin="182,277,0,0" VerticalAlignment="Top" Width="124" Click="Button_Click_1"/>
+        <Label Visibility="Hidden" Content="Socio no encontrado" FontSize="14" FontWeight="Bold" Foreground="Crimson" HorizontalAlignment="Left" Height="26" Margin="94,234,0,0" VerticalAlignment="Top" Width="148"/>
+        <Grid x:Name="panelRegistro" Visibility="Hidden" HorizontalAlignment="Left" Height="320" Margin="361,9,0,0" VerticalAlignment="Top" Width="372">
+            <Label Content="Socio Encontrado:" FontSize="14" FontWeight="Bold" HorizontalAlignment="Left" Height="26" Margin="6,9,0,0" VerticalAlignment="Top" Width="132"/>
+            <Label Content="Nombre:" FontSize="14" HorizontalAlignment="Left" Height="26" Margin="8,44,0,0" VerticalAlignment="Top" Width="127"/>
+            <Label Content="Apellido Paterno:" FontSize="14" HorizontalAlignment="Left" Height="26" Margin="8,92,0,0" VerticalAlignment="Top" Width="127"/>
+            <Label Content="Apellido Materno:" FontSize="14" HorizontalAlignment="Left" Height="26" Margin="8,144,0,0" VerticalAlignment="Top" Width="127"/>
+            <Label Content="Correo:" FontSize="14" HorizontalAlignment="Left" Height="26" Margin="8,190,0,0" VerticalAlignment="Top" Width="127"/>
+            <Label Content="Teléfono:" FontSize="14" HorizontalAlignment="Left" Height="26" Margin="8,242,0,0" VerticalAlignment="Top" Width="127"/>
+            <Button Content="Aceptar" Background="#28b240" FontSize="14" Foreground="WHITE" Height="32" Margin="39,278,208,0" VerticalAlignment="Top" Click="Button_Click_2"/>
+            <TextBox x:Name="Nombre" HorizontalAlignment="Left" Height="26" Margin="141,44,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="202" BorderThickness="0,0,0,1" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" FontSize="14" FontWeight="Bold" KeyUp="TextBox_KeyUp" PreviewTextInput="Valida_PreviewTextInput"/>
+            <TextBox x:Name="APPaterno" HorizontalAlignment="Left" Height="26" Margin="141,92,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="202" BorderThickness="0,0,0,1" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" FontSize="14" FontWeight="Bold" KeyUp="TextBox_KeyUp" PreviewTextInput="Valida_PreviewTextInput"/>
+            <TextBox x:Name="APMaterno" HorizontalAlignment="Left" Height="26" Margin="141,144,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="202" BorderThickness="0,0,0,1" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" FontSize="14" FontWeight="Bold" KeyUp="TextBox_KeyUp" PreviewTextInput="Valida_PreviewTextInput"/>
+            <TextBox x:Name="Email" HorizontalAlignment="Left" Height="26" Margin="141,192,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="202" BorderThickness="0,0,0,1" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" FontSize="14" FontWeight="Bold"/>
+            <TextBox x:Name="Telefono" HorizontalAlignment="Left" Height="26" Margin="141,244,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="202" BorderThickness="0,0,0,1" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" Padding="0,0,0,-1" FontSize="14" FontWeight="Bold" KeyUp="TextBox_KeyUp"/>
+            <Button x:Name="Cancelar" Content="Cancelar" Background="#006aaf" FontSize="14" Foreground="WHITE" Height="32" Margin="179,278,68,0" VerticalAlignment="Top" Click="Cancelar_Click"/>
+        </Grid>
+    </Grid>
+</Window>

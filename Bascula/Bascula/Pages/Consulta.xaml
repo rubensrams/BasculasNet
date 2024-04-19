@@ -1,0 +1,67 @@
+﻿<Window x:Class="Bascula.Pages.Consulta"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Bascula.Pages"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize"
+        Title="Consulta" Height="496" Width="800">
+    <Grid>
+        <DataGrid x:Name="Grid" Margin="10,88,10,0" AutoGenerateColumns = "False" IsReadOnly="True"  ColumnWidth="*" Height="240" VerticalAlignment="Top" SelectionChanged="Grid_SelectionChanged">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header = "IDCOMPRA" FontSize="18" Visibility="Hidden" Binding = "{Binding IdCompra}" />
+                <DataGridTextColumn Header = "FOLIO" FontSize="18" Binding = "{Binding Folio}" />
+                <DataGridTextColumn Header = "FECHA" FontSize="18" Binding = "{Binding Fecha}" />
+                <DataGridTextColumn Header = "RECUPERADOR" FontSize="18" Binding = "{Binding Recuperador}" />
+                <DataGridTextColumn Header = "SUCURSAL" FontSize="18" Binding = "{Binding Sucursal}" />
+                <DataGridTextColumn Header = "TOTAL" FontSize="18" Binding = "{Binding Total, ConverterCulture='en-US' ,StringFormat=c}" />
+                <DataGridTextColumn Header = "USUARIO" FontSize="18" Binding = "{Binding User}" />
+                <DataGridTextColumn Header = "ESTATUS" FontSize="18" Binding = "{Binding Estatus}" />
+                <DataGridTemplateColumn Width="50">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Click="SendCancel" Background="white">
+                                <StackPanel>
+                                    <Image Source="/Pages/icon-cancel.png" Height="22" />
+                                </StackPanel>
+                            </Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Label Content="Desde :"  Height="32" Margin="10,29,0,0" VerticalAlignment="Top" FontSize="14" HorizontalContentAlignment="Left" HorizontalAlignment="Left" Width="56"/>
+        <DatePicker x:Name="FechaInicial" HorizontalAlignment="Left" Margin="71,29,0,0" VerticalAlignment="Top" FontSize="14" Height="32" Width="172">
+            <DatePicker.Resources>
+                <Style TargetType="{x:Type DatePickerTextBox}">
+                    <Setter Property="IsReadOnly" Value="True"/>
+                </Style>
+            </DatePicker.Resources>
+        </DatePicker>
+        <Label Content="Hasta :"  Height="32" Margin="253,29,0,0" VerticalAlignment="Top" FontSize="14" HorizontalContentAlignment="Left" HorizontalAlignment="Left" Width="52"/>
+        <DatePicker x:Name="FechaFinal" HorizontalAlignment="Left" Margin="310,29,0,0" VerticalAlignment="Top" FontSize="14" Height="32" Width="172">
+            <DatePicker.Resources>
+                <Style TargetType="{x:Type DatePickerTextBox}">
+                    <Setter Property="IsReadOnly" Value="True"/>
+                </Style>
+            </DatePicker.Resources>
+        </DatePicker>
+        <Button x:Name="Buscar" Content="Buscar" Background="#006aaf" FontSize="14" Foreground="WHITE" HorizontalAlignment="Left" Height="32" Margin="492,29,0,0" VerticalAlignment="Top" Width="108" Click="Buscar_Click"/>
+        <Button x:Name="Exportar" Content="Excel" Background="#28b240" FontSize="14" Foreground="WHITE" HorizontalAlignment="Left" Margin="615,29,0,0" VerticalAlignment="Top" Height="32" Width="71" Click="Exportar_Click"/>
+        <DataGrid x:Name="Detalle" HorizontalAlignment="Center" Height="128" Margin="0,342,0,0" VerticalAlignment="Top" Width="780" AutoGenerateColumns = "False" IsReadOnly="True" ColumnWidth="*">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header = "IDCOMPRA" FontSize="18" Visibility="Hidden" Binding = "{Binding Id}" />
+                <DataGridTextColumn Header = "MATERIAL" FontSize="18" Binding = "{Binding Nombre}" />
+                <DataGridTextColumn Header = "PESO BRUTO" FontSize="18" Binding = "{Binding PesoBruto}" />
+                <DataGridTextColumn Header = "PESO NETO" FontSize="18" Binding = "{Binding PesoNeto}" />
+                <DataGridTextColumn Header = "TARA" FontSize="18" Binding = "{Binding Tara}" />
+                <DataGridTextColumn Header = "COSTO X KILO" FontSize="18" Binding = "{Binding CostoKilo, ConverterCulture='en-US' ,StringFormat=c}" />
+                <DataGridTextColumn Header = "TOTAL" FontSize="18" Binding = "{Binding Total, ConverterCulture='en-US' ,StringFormat=c}" />
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button x:Name="ExportarPDF" Content="PDF" Background="#FFD41616" FontSize="14" Foreground="WHITE" HorizontalAlignment="Left" Margin="697,29,0,0" VerticalAlignment="Top" Height="32" Width="71" Click="Exportar_Click_PDF"/>
+
+    </Grid>
+</Window>

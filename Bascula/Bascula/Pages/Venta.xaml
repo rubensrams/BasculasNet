@@ -1,0 +1,110 @@
+﻿<Page x:Class="Bascula.Pages.Venta"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Bascula.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="590" d:DesignWidth="1034.227"
+      Title="Venta" RenderTransformOrigin="0.5,0.5" Loaded="Page_Loaded"
+      >
+
+    <DockPanel LastChildFill="true" Margin="0,0,0,0">
+        <Border DockPanel.Dock="Top" Margin="0,0,0,8" Background="White" BorderThickness="1">
+            <Border.Effect>
+                <DropShadowEffect BlurRadius="6" Opacity="0.2"/>
+            </Border.Effect>
+            <Grid  Height="87" Background="White">
+                <Label x:Name="Fullname" Content="MAURICIO ISLAS CASTAÑEDA" FontSize="16" FontFamily="Calibri" Width="258" HorizontalAlignment="Right"  HorizontalContentAlignment="LEFT" Margin="0,2,2,0" Height="26" VerticalAlignment="Top"  />
+                <Label x:Name="Sucursal" Content="CA: CANCUN" FontSize="16" FontFamily="Calibri"  VerticalContentAlignment="Top" HorizontalContentAlignment="LEFT" Margin="0,30,0,0" Height="26" VerticalAlignment="Top" HorizontalAlignment="Right" Width="260"  />
+                <Label x:Name="Fecha" FontSize="16" FontFamily="Calibri"  VerticalContentAlignment="Top" HorizontalContentAlignment="LEFT" Margin="0,58,0,0" HorizontalAlignment="Right" Width="260" Height="28" VerticalAlignment="Top" />
+                <Image x:Name="Avatar" Source="/Resources/images.png" Margin="703,12,265,0" Height="64" HorizontalAlignment="Right" VerticalAlignment="Top"/>
+                <Label x:Name="Folio" Content="FOLIO DE COMPRA: 00001" FontSize="16" FontFamily="Calibri"  VerticalContentAlignment="Top" HorizontalContentAlignment="LEFT" Margin="3,0,0,0" Height="26" VerticalAlignment="Center" HorizontalAlignment="Left" Width="182"  />
+                <Button x:Name="AddSocio" Content="Socio Recuperador" Margin="406,26,429,23" Background="#28b240" Foreground="White" FontFamily="Calibri" FontSize="20" Click="AddSocio_Click"/>
+
+            </Grid>
+        </Border>
+        <Grid Background="white">
+
+            <Label Content="Socio Recuperador:"  FontSize="16" FontFamily="Calibri"  HorizontalAlignment="Left" Margin="3,16,0,0" VerticalAlignment="Top" Width="139"/>
+            <Label Content="Material:"  FontSize="16" FontFamily="Calibri"  HorizontalAlignment="Left" Margin="3,59,0,0" VerticalAlignment="Top" Width="139"/>
+            <Label x:Name="Cliente" FontSize="18" HorizontalAlignment="Left" Margin="147,17,0,0" VerticalAlignment="Top" Width="259" Height="32" BorderBrush="#FFABADB3" BorderThickness="1"/>
+            <ComboBox x:Name="Producto" FontSize="18" HorizontalAlignment="Left" Margin="147,60,0,0" VerticalAlignment="Top" Width="259" IsEditable="True" StaysOpenOnEdit="True" Height="32" LostFocus="Producto_LostFocus" SelectionChanged="Producto_SelectionChanged"/>
+            <TextBox  x:Name="Peso"  IsEnabled="False"  Margin="0,3,384,0" FontSize="67" FontWeight="Normal" FontFamily="{StaticResource Calculator}" TextWrapping="Wrap" Text="0.00" HorizontalAlignment="Right" Width="191" HorizontalContentAlignment="Right" Foreground="#FF00D40D" Height="85" VerticalAlignment="Top"  Background="Black" VerticalContentAlignment="Bottom">
+                <TextBox.Template>
+                    <ControlTemplate TargetType="{x:Type TextBox}">
+                        <Border Background="{TemplateBinding Background}">
+                            <ScrollViewer x:Name="PART_ContentHost" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"/>
+                        </Border>
+                    </ControlTemplate>
+                </TextBox.Template>
+            </TextBox>
+            <TextBox x:Name="Tara" IsEnabled="False" Margin="0,4,177,0" FontSize="67" FontFamily="{StaticResource Calculator}" TextWrapping="Wrap" Text="0.00" HorizontalAlignment="Right" Width="165" HorizontalContentAlignment="Right" Foreground="#FFFF6A24" Background="Black" VerticalContentAlignment="Bottom" Height="84" VerticalAlignment="Top">
+                <TextBox.Template>
+                    <ControlTemplate TargetType="{x:Type TextBox}">
+                        <Border Background="{TemplateBinding Background}">
+                            <ScrollViewer x:Name="PART_ContentHost" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"/>
+                        </Border>
+                    </ControlTemplate>
+                </TextBox.Template>
+            </TextBox>
+            <Button x:Name="Pesar" Content="PESAR" Height="38" Margin="0,106,384,0" VerticalAlignment="Top" Background="#28b240" Foreground="White" FontFamily="Calibri" FontSize="20" HorizontalAlignment="Right" Width="191" Click="Pesar_Click"/>
+            <Button x:Name="CalculaTara" Content="TARA" Height="38" Margin="0,106,177,0" VerticalAlignment="Top" Background="#FFD41616" Foreground="White" FontFamily="Calibri" FontSize="20" HorizontalAlignment="Right" Width="165" Click="CalculaTara_Click"/>
+            <DataGrid x:Name = "datos"  Margin="0,160,0,143" AutoGenerateColumns = "False" IsReadOnly="True"  ColumnWidth="*">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header = "MATERIAL" FontSize="18" Binding = "{Binding Nombre}" />
+                    <DataGridTextColumn Header = "PESO BRUTO" FontSize="18" Binding = "{Binding PesoBruto}" />
+                    <DataGridTextColumn Header = "PESO NETO" FontSize="18" Binding = "{Binding PesoNeto}" />
+                    <DataGridTextColumn Header = "TARA" FontSize="18" Binding = "{Binding Tara}" />
+                    <DataGridTextColumn Header = "PRECIO NEGOCIADO" FontSize="18" Binding = "{Binding CostoKilo, ConverterCulture='en-US' ,StringFormat=c}" />
+                    <DataGridTextColumn Header = "TOTAL" FontSize="18" Binding = "{Binding Total , ConverterCulture='en-US' ,StringFormat=c}" />
+                    <DataGridTemplateColumn Width="50">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Click="ShowHideDetails" Background="white">
+                                    <StackPanel>
+                                        <Image Source="/Resources/trash.png" Height="22" />
+                                    </StackPanel>
+                                </Button>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+            <Label Content="Total:"  FontSize="20" HorizontalContentAlignment="Right" FontFamily="Calibri" FontWeight="bold" Margin="0,0,146,99" Height="35" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="78"/>
+            <Label x:Name="Total" Content="$0.00"  FontSize="20" FontFamily="Calibri" FontWeight="bold" Margin="0,0,10,100" Foreground="#FF1B9402" Background="#FFF1FFDE" Height="33" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="125" HorizontalContentAlignment="Right"/>
+            <TextBlock x:Name="LeyendaKilo" TextAlignment="Center" TextWrapping="Wrap" Text="" FontSize="20" FontWeight="bold" Foreground="#FF3CB308" Margin="0,0,29,21" FontFamily="Calibri" Height="50" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="337"/>
+            <Button Margin="489,0,0,8" Background="#28b240" Click="Venta_Click" Height="125" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="153">
+                <StackPanel>
+                    <Image Source="/Resources/Venta.png" Height="84" Width="76" />
+                    <TextBlock HorizontalAlignment="Center" FontFamily="Calibri" FontSize="20" Foreground="White">Generar Compra</TextBlock>
+                </StackPanel>
+            </Button>
+            <Button Margin="327,0,0,8" Background="#006aaf"  Click="Agregar_Click" HorizontalAlignment="Left" Width="153" Height="125" VerticalAlignment="Bottom">
+                <StackPanel>
+                    <Image Source="/Resources/add.png" Height="84" Width="76" />
+                    <TextBlock HorizontalAlignment="Center" FontFamily="Calibri" FontSize="20" Foreground="White"><Run Text="Agregar"/></TextBlock>
+                </StackPanel>
+            </Button>
+            <Label Content="Flete:"  FontSize="16
+                   " FontFamily="Calibri"  HorizontalAlignment="Left" Margin="3,104,0,0" VerticalAlignment="Top" Width="139"/>
+            <ComboBox x:Name="Flete" HorizontalAlignment="Left" IsEditable="True" Margin="147,104,0,0" VerticalAlignment="Top" Width="259" FontSize="18" StaysOpenOnEdit="True" Height="32"/>
+            <Button x:Name="Consulta" Content="Consulta" Margin="8,0,0,77" Background="Orange" Foreground="White" FontFamily="Calibri" FontSize="20" HorizontalAlignment="Left" Width="150" Height="56" VerticalAlignment="Bottom" Click="Consulta_Click"/>
+            <Button x:Name="Cierre" Content="Cerrar turno" Margin="8,0,0,8" Background="#FFD41616" Foreground="White" FontFamily="Calibri" FontSize="20" Height="56" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="310" Click="Cierre_Click"/>
+            <Button x:Name="Reload" Content="Recargar" Margin="168,0,0,77" Background="Purple" Foreground="White" FontFamily="Calibri" FontSize="20" Height="56" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="150" Click="Reload_Click"/>
+            <Image Height="132" Margin="0,4,4,0" VerticalAlignment="Top" Source="/Resources/logo.png" HorizontalAlignment="Right" Width="132" Opacity="0.4"/>
+            <Label Content="K.G" FontSize="12" FontWeight="Bold" Height="84" Margin="0,4,349,0" VerticalAlignment="Top" VerticalContentAlignment="Bottom" HorizontalAlignment="Right" Width="30"/>
+            <Label Content="K.G" FontSize="12" FontWeight="Bold" Height="84" Margin="0,4,142,0" VerticalAlignment="Top" VerticalContentAlignment="Bottom" HorizontalAlignment="Right" Width="30"/>
+            <Label x:Name="labelPeso" Content="" HorizontalAlignment="Right" Margin="0,0,229,99" VerticalAlignment="Bottom" Height="34" Width="135"/>
+        </Grid>
+
+
+
+
+
+
+
+
+
+    </DockPanel>
+</Page>

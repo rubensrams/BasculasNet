@@ -1,0 +1,23 @@
+﻿<Window x:Class="Bascula.Pages.Cierre"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Bascula.Pages"
+        mc:Ignorable="d"
+        Title="Cierre" Height="450" Width="611"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize" Loaded="Window_Loaded">
+    <Grid>
+        <TextBox x:Name="Apertura" FontWeight="Bold" Margin="266,76,0,0" FontSize="18" TextWrapping="Wrap" VerticalAlignment="Top"  FontFamily="Calibri"  Height="32" VerticalContentAlignment="Center" HorizontalAlignment="Left" Width="282" IsReadOnly="True"/>
+        <TextBox x:Name="Compras" FontWeight="Bold" Margin="266,137,0,0" FontSize="18" TextWrapping="Wrap"  FontFamily="Calibri" VerticalContentAlignment="Top" HorizontalAlignment="Left" Width="282" Height="32" VerticalAlignment="Top" IsReadOnly="True"/>
+        <TextBox x:Name="Diferencia" FontWeight="Bold" Margin="266,197,0,0" FontSize="18" TextWrapping="Wrap" VerticalAlignment="Top"  FontFamily="Calibri" Width="282"  Height="32" VerticalContentAlignment="Center" HorizontalAlignment="Left" IsReadOnly="True"/>
+        <TextBox x:Name="Restante" FontWeight="Bold" Margin="266,258,0,0" FontSize="18" TextWrapping="Wrap" VerticalAlignment="Top"  FontFamily="Calibri"  Height="32" VerticalContentAlignment="Center" HorizontalAlignment="Left" Width="282" IsReadOnly="True"/>
+        <Label Content="Dinero de apertura:"  Height="32" Margin="10,76,0,0" VerticalAlignment="Top" FontSize="14" HorizontalContentAlignment="Left" HorizontalAlignment="Left" Width="225"/>
+        <Label Content="Compras del día:"  Height="32" Margin="10,137,0,0" VerticalAlignment="Top" FontSize="14" HorizontalContentAlignment="Left" HorizontalAlignment="Left" Width="225"/>
+        <Label Content="Déficit de Apertura de Dinero:"  Height="32" Margin="10,197,0,0" VerticalAlignment="Top" FontSize="14" HorizontalContentAlignment="Left" HorizontalAlignment="Left" Width="225"/>
+        <Label Content="Cantidad en caja:"  Height="32" Margin="10,258,0,0" VerticalAlignment="Top" FontSize="14" HorizontalContentAlignment="Left" HorizontalAlignment="Left" Width="225"/>
+        <Button Content="Cancelar" Margin="43,343,327,0" Background="#28b240" Foreground="White" FontFamily="Calibri" FontSize="20" Height="38" VerticalAlignment="Top" Click="Button_Click"/>
+        <Button Content="Aceptar" Margin="326,343,44,0" Background="#28b240" Foreground="White" FontFamily="Calibri" FontSize="20" Height="38" VerticalAlignment="Top" Click="Button_Click_1"/>
+    </Grid>
+</Window>

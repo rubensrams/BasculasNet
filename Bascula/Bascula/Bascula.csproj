@@ -1,0 +1,59 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+    <ApplicationIcon>petstar.ico</ApplicationIcon>
+    <PackageIcon>3344067.png</PackageIcon>
+    <AssemblyName>$(MSBuildProjectName)</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Pages\icon-cancel.png" />
+    <None Remove="Pages\trash.svg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="iTextSharp" Version="5.5.13.3" />
+    <PackageReference Include="itextsharp.xmlworker" Version="5.5.13.3" />
+    <PackageReference Include="MySql.Data" Version="8.1.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="System.IO.Ports" Version="8.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Pages\icon-cancel.png" />
+    <Resource Include="Resources\trash.png" />
+    <Resource Include="Resources\bascula.png" />
+    <Resource Include="Resources\3344067.png" />
+    <Resource Include="Resources\images.png" />
+    <Resource Include="Resources\candado.png" />
+    <Resource Include="Resources\add.png" />
+    <Resource Include="Resources\reset.png" />
+    <Resource Include="Resources\venta.png" />
+    <Resource Include="Resources\logo.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+   <Content Include="petstar.ico" />
+	  <Content Include="logo.png" >
+		   <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </Content>
+   <Content Include="Resources\Calculator.ttf">
+     <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+   </Content>
+ </ItemGroup>
+
+  <ItemGroup>
+    <None Update="ini.properties">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Resources\3344067.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
+
+</Project>
